@@ -59,59 +59,24 @@ public class Main {
         if (Long.parseLong(number) < 0) {
             System.out.println("The first parameter should be a natural number or zero.");
         } else {
-            if (Long.parseLong(number) % 2 == 0) {
+            if (IsEven(number)) {
                 System.out.printf("           %n%s is even", number);
             } else {
                 System.out.printf("           %n%s is odd", number);
             }
-            char character1 = number.charAt(number.length() - 1);
-            int character = character1 - 48;
-            if (Long.parseLong(number) % 7 == 0 || character == 7) {
+            if (IsBuzz(number)) {
                 System.out.print(", buzz");
             }
-            int counter =0;
-            for (int i = 1; i < number.length(); i++) {
-                char character3 = number.charAt(i);
-                int character4= character3 - 48;
-                if ((character4 == 0))  {
-                    counter ++;
-                }
-            }
-            if (counter != 0) {
+            if (IsDuck(number)) {
                 System.out.print(", duck");
             }
-            StringBuilder builder = new StringBuilder();
-            builder.append(number);
-            StringBuilder builder2 =  new StringBuilder();
-            for (int i = 0; i < builder.length(); i++) {
-                builder2.append(builder.charAt(builder.length() - 1 - i));
-            }
-            boolean isSymetric = true;
-            for (int i = 0; i < builder.length(); i++) {
-                if(builder.charAt(i) != builder2.charAt(i)) {
-                    isSymetric = false;
-                    break;
-                }
-            }
-            if (isSymetric) {
+            if (IsPalindromic(number)) {
                 System.out.print(", palindromic");
             }
-            if (number.length() > 2) {
-                char[] element = new char[] {number.charAt(0) , number.charAt(number.length() - 1)};
-                String string = String.valueOf(element);
-                if (Long.parseLong(number) % Long.parseLong(string) == 0) {
+                if (IsGapful(number)) {
                     System.out.print(", gapful");
                 }
-            }
-            int sum =0;
-            int product = 1;
-            for (int i = 0; i < number.length(); i++) {
-                char variable = number.charAt(i);
-                int integer = variable - 48;
-                sum += integer;
-                product *= integer;
-            }
-            if (sum == product) {
+            if (IsSpy(number)) {
                 System.out.println(", spy");
             }
         }
@@ -122,7 +87,7 @@ public class Main {
             System.out.println("The first parameter should be a natural number or zero.");
         } else {
             System.out.printf("Properties of %s%n", number);
-            if (Long.parseLong(number) % 2 == 0) {
+            if (IsEven(number)) {
                 String str = """
                                 even: true
                                  odd: false
@@ -135,68 +100,30 @@ public class Main {
                         """;
                 System.out.print(str);
             }
-            char character1 = number.charAt(number.length() - 1);
-            int character = character1 - 48;
-            if (Long.parseLong(number) % 7 == 0 || character == 7) {
+            if (IsBuzz(number)) {
 
                 System.out.println("        buzz: true");
             } else {
                 System.out.println("        buzz: false");
             }
-/*            char character2 = number.charAt(0);
-            int characterNew = character2 - 48;*/
-            int counter =0;
-            for (int i = 1; i < number.length(); i++) {
-                char character3 = number.charAt(i);
-                int character4= character3 - 48;
-                if ((character4 == 0))  {
-                    counter ++;
-                }
-            }
-            if (counter != 0) {
+            if (IsDuck(number)) {
                 System.out.println("        duck: true");
             } else {
                 System.out.println("        duck: false");
 
             }
-            StringBuilder builder = new StringBuilder();
-            builder.append(number);
-            StringBuilder builder2 =  new StringBuilder();
-            for (int i = 0; i < builder.length(); i++) {
-                builder2.append(builder.charAt(builder.length() - 1 - i));
-            }
-            boolean isSymetric = true;
-            for (int i = 0; i < builder.length(); i++) {
-                if(builder.charAt(i) != builder2.charAt(i)) {
-                    isSymetric = false;
-                    break;
-                }
-            }
-            if (isSymetric) {
+
+            if (IsPalindromic(number)) {
                 System.out.println(" palindromic: true");
             } else {
                 System.out.println(" palindromic: false");
             }
-            if (number.length() > 2) {
-                char[] element = new char[] {number.charAt(0) , number.charAt(number.length() - 1)};
-                String string = String.valueOf(element);
-                if (Long.parseLong(number) % Long.parseLong(string) == 0) {
+                if (IsGapful(number)) {
                     System.out.println("      gapful: true");
                 } else {
                     System.out.println("      gapful: false");
                 }
-            } else {
-                System.out.println(" gapful: false");
-            }
-            int sum =0;
-            int product = 1;
-            for (int i = 0; i < number.length(); i++) {
-                char variable = number.charAt(i);
-                int integer = variable - 48;
-                sum += integer;
-                product *= integer;
-            }
-            if (sum == product) {
+            if (IsSpy(number)) {
                 System.out.println("         spy: true");
             } else {
                 System.out.println("         spy: false");
