@@ -75,6 +75,57 @@ public class Main {
         }
         return isSquare;
     }
+    public static boolean IsJumping (String number) {
+        boolean isJumping = false;
+        int counter = 0;
+        if (number.length() == 1) {
+            isJumping = true;
+        }
+        else {
+            char[] chars = number.toCharArray();
+            if (chars[chars.length - 2] == chars[chars.length - 1] + 1 || chars[chars.length - 2] == chars[chars.length - 1] - 1) {
+                for (int i = 0; i < chars.length - 1; i++) {
+                    if (chars[i] == chars[i + 1] + 1 || chars[i] == chars[i + 1] - 1) {
+                        counter++;
+                    } /*else {
+                        isJumping = false;
+                        break;
+                    }*/
+                }
+/*            char c = number.charAt(number.length() - 2);
+            if (number.charAt(number.length() - 1) == c - 1 ||
+                    number.charAt(number.length() - 1) == c + 1) {
+                for (int i = 0; i < number.length() - 1; i++) {
+                    if ((number.charAt(i) == number.charAt(i + 1) + 1) || (number.charAt(i) == number.charAt(i + 1) - 1)) {
+                        //counter ++;
+                        isJumping = true;
+                    } *//*else {
+                        isJumping = false;
+                        break;
+                    }*//*
+                }*/
+/*                if (c == c2 - 1 || c == c2 + 1) {
+                    for (int i = 0; i < number.length() - 1; i++) {
+                        if ((number.charAt(i) == number.charAt(i + 1) + 1) || (number.charAt(i) == number.charAt(i + 1) - 1)) {
+                            //counter ++;
+                            isJumping = true;
+                        } *//*else {
+                        isJumping = false;
+                        break;
+                    }*//*
+                    }
+                }*/
+
+            }
+/*            if (counter == number.length() - 1) {
+                isJumping = true;
+            }*/
+        }
+        if (counter == number.length() - 1) {
+            isJumping =true;
+        }
+        return isJumping;
+    }
     public static void PropertiesProviderForMoreNumbers(String number) {
         if (Long.parseLong(number) < 0) {
             System.out.println("The first parameter should be a natural number or zero.");
@@ -104,6 +155,9 @@ public class Main {
             }
             if (IsSquare(number)) {
                 System.out.print(", square");
+            }
+            if (IsJumping(number)) {
+                System.out.print(", jumping");
             }
         }
 
@@ -163,6 +217,11 @@ public class Main {
                 System.out.println("         square: true");
             } else {
                 System.out.println("         square: false");
+            }
+            if (IsJumping(number)) {
+                System.out.println("         jumping: true");
+            } else {
+                System.out.println("         jumping: false");
             }
         }
 
@@ -321,6 +380,279 @@ public class Main {
             }
         }
     }
+    public static void JumpingProvider (String[] list) {
+        String variable = list[0];
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingBuzzProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && IsBuzz(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingDuckProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && IsDuck(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingOddProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && !IsEven(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingEvenProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && IsEven(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingGapfulProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && IsGapful(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingPalindromicProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && IsPalindromic(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingSquareProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && IsSquare(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingSunnyProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && IsSunny(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void JumpingSpyProvider (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsJumping(variable) && IsSpy(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void Providerthree (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (!IsEven(variable) && IsSpy(variable) && IsPalindromic(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void Providerthree2 (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (!IsEven(variable) && IsSpy(variable) && IsGapful(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void Providerthree3 (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsEven(variable) && IsDuck(variable) && IsPalindromic(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void Providerfor2 (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsEven(variable) && IsGapful(variable) && IsSpy(variable) && IsBuzz(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void Providerfor (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsEven(variable) && IsDuck(variable) && IsPalindromic(variable) && IsBuzz(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void Providerfive (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsEven(variable) && IsDuck(variable) && IsPalindromic(variable) && IsBuzz(variable) && IsGapful(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
+    public static void Providerfive2 (String[] list, String variable) {
+        Long variable2 = Long.parseLong(variable);
+        int counter = 0;
+        long number2 = Long.parseLong(list[1]);
+        while (counter < number2) {
+            if (IsEven(variable) && IsDuck(variable) && IsGapful(variable) && IsSunny(variable) && IsBuzz(variable)) {
+                PropertiesProviderForMoreNumbers(variable);
+                counter++;
+                variable2++;
+                variable = Long.toString(variable2);
+            } else {
+                variable2++;
+                variable = Long.toString(variable2);
+            }
+        }
+    }
     public static void main(String[] args) {
         System.out.println("Welcome to Amazing Numbers!");
         String str = """
@@ -329,8 +661,8 @@ Supported requests:
 - enter a natural number to know its properties;
 - enter two natural numbers to obtain the properties of the list:
   * the first parameter represents a starting number;
-  * the second parameters show how many consecutive numbers are to be processed;
-- two natural numbers and two properties to search for;
+  * the second parameter shows how many consecutive numbers are to be printed;
+- two natural numbers and properties to search for;
 - separate the parameters with one space;
 - enter 0 to exit.""";
         System.out.println(str);
@@ -354,6 +686,7 @@ Supported requests:
                 }
             } else {
                 String[] list = number.split(" ");
+                String variable = list[0];
                 try {
                     if (list[1].startsWith("-")) {
                         System.out.println("The second parameter should be a natural number.");
@@ -390,11 +723,13 @@ Supported requests:
                                 SunnyProvider(list);
                             } else if (list[2].equalsIgnoreCase("square")) {
                                 SquareProvider(list);
+                            } else if (list[2].equalsIgnoreCase("jumping")) {
+                                JumpingProvider(list);
                             } else {
                                 System.out.printf("The property [%s] is wrong.%n", list[2].toUpperCase());
-                                System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                             }
-                        } else {
+                        } else if (list.length == 4){
                             if (list[2].equalsIgnoreCase("buzz")) {
                                 if (list[3].equalsIgnoreCase("buzz")) {
                                     BuzzProvider(list);
@@ -414,9 +749,11 @@ Supported requests:
                                     buzznumbers.ProviderBuzz.BuzzEvenProvider(list);
                                 } else if (list[3].equalsIgnoreCase("odd")) {
                                     buzznumbers.ProviderBuzz.BuzzOddProvider(list);
+                                } else if (list[3].equalsIgnoreCase("jumping")) {
+                                    JumpingBuzzProvider(list, variable);
                                 } else {
                                     System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                 }
                             } else if ((list[2].equalsIgnoreCase("duck"))) {
                                 if (list[3].equalsIgnoreCase("duck")) {
@@ -435,12 +772,14 @@ Supported requests:
                                     buzznumbers.ProviderDuck.DuckEvenProvider(list);
                                 } else if (list[3].equalsIgnoreCase("odd")) {
                                     buzznumbers.ProviderDuck.DuckOddProvider(list);
+                                } else if (list[3].equalsIgnoreCase("jumping")) {
+                                    JumpingDuckProvider(list, variable);
                                 } else if (list[3].equalsIgnoreCase("spy")) {
                                     System.out.printf("The request contains mutually exclusive properties: [%s, %s]%n", list[2].toUpperCase(), list[3].toUpperCase());
                                     System.out.println("There are no numbers with these properties.");
                                 } else {
                                     System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                 }
                             }else if ((list[2].equalsIgnoreCase("palindromic"))){
                                 if (list[3].equalsIgnoreCase("palindromic")) {
@@ -461,9 +800,11 @@ Supported requests:
                                     buzznumbers.ProviderPalindromic.PalindromicOddProvider(list);
                                 } else if (list[3].equalsIgnoreCase("spy")) {
                                     buzznumbers.ProviderPalindromic.PalindromicSpyProvider(list);
+                                } else if (list[3].equalsIgnoreCase("jumping")) {
+                                    JumpingPalindromicProvider(list, variable);
                                 } else {
                                     System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                 }
                             } else if ((list[2].equalsIgnoreCase("gapful"))) {
                                 if (list[3].equalsIgnoreCase("gapful")) {
@@ -484,9 +825,11 @@ Supported requests:
                                     buzznumbers.ProviderGapful.GapfulOddProvider(list);
                                 } else if (list[3].equalsIgnoreCase("spy")) {
                                     buzznumbers.ProviderGapful.GapfulSpyProvider(list);
+                                } else if (list[3].equalsIgnoreCase("jumping")) {
+                                    JumpingGapfulProvider(list, variable);
                                 } else {
                                     System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                 }
                             } else if ((list[2].equalsIgnoreCase("sunny"))) {
                                 if (list[3].equalsIgnoreCase("sunny")) {
@@ -505,12 +848,14 @@ Supported requests:
                                     buzznumbers.ProviderSunny.SunnyOddProvider(list);
                                 } else if (list[3].equalsIgnoreCase("spy")) {
                                     buzznumbers.ProviderSunny.SunnySpyProvider(list);
+                                } else if (list[3].equalsIgnoreCase("jumping")) {
+                                    JumpingSunnyProvider(list, variable);
                                 } else if (list[3].equalsIgnoreCase("square")) {
                                     System.out.printf("The request contains mutually exclusive properties: [%s, %s]%n", list[2].toUpperCase(), list[3].toUpperCase());
                                     System.out.println("There are no numbers with these properties.");
                                 } else {
                                     System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                 }
                             }else if ((list[2].equalsIgnoreCase("spy"))) {
                                     if (list[3].equalsIgnoreCase("spy")) {
@@ -529,12 +874,14 @@ Supported requests:
                                         buzznumbers.ProviderSpy.SpyOddProvider(list);
                                     } else if (list[3].equalsIgnoreCase("gapful")) {
                                         buzznumbers.ProviderSpy.SpyGapfulProvider(list);
+                                    } else if (list[3].equalsIgnoreCase("jumping")) {
+                                        JumpingSpyProvider(list, variable);
                                     } else if (list[3].equalsIgnoreCase("duck")) {
                                         System.out.printf("The request contains mutually exclusive properties: [%s, %s]%n", list[2].toUpperCase(), list[3].toUpperCase());
                                         System.out.println("There are no numbers with these properties.");
                                     } else {
                                         System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                        System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                        System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                     }
                                 }else if ((list[2].equalsIgnoreCase("square"))) {
                                         if (list[3].equalsIgnoreCase("square")) {
@@ -553,12 +900,14 @@ Supported requests:
                                             buzznumbers.ProviderSquare.SquareOddProvider(list);
                                         } else if (list[3].equalsIgnoreCase("spy")) {
                                             buzznumbers.ProviderSquare.SquareSpyProvider(list);
+                                        } else if (list[3].equalsIgnoreCase("jumping")) {
+                                            JumpingSquareProvider(list, variable);
                                         } else if (list[3].equalsIgnoreCase("sunny")) {
                                             System.out.printf("The request contains mutually exclusive properties: [%s, %s]%n", list[2].toUpperCase(), list[3].toUpperCase());
                                             System.out.println("There are no numbers with these properties.");
                                         } else {
                                             System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                            System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                            System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                         }
                                     }else if ((list[2].equalsIgnoreCase("even"))) {
                                             if (list[3].equalsIgnoreCase("even")) {
@@ -577,12 +926,14 @@ Supported requests:
                                                 buzznumbers.ProviderEven.EvenGapfulProvider(list);
                                             } else if (list[3].equalsIgnoreCase("spy")) {
                                                 buzznumbers.ProviderEven.EvenSpyProvider(list);
+                                            } else if (list[3].equalsIgnoreCase("jumping")) {
+                                                JumpingEvenProvider(list, variable);
                                             } else if (list[3].equalsIgnoreCase("odd")) {
                                                 System.out.printf("The request contains mutually exclusive properties: [%s, %s]%n", list[2].toUpperCase(), list[3].toUpperCase());
                                                 System.out.println("There are no numbers with these properties.");
                                             } else {
                                                 System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                                System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                                System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                             }
                                         }else if ((list[2].equalsIgnoreCase("odd"))) {
                                                 if (list[3].equalsIgnoreCase("odd")) {
@@ -601,26 +952,208 @@ Supported requests:
                                                     buzznumbers.ProviderOdd.OddGapfulProvider(list);
                                                 } else if (list[3].equalsIgnoreCase("spy")) {
                                                     buzznumbers.ProviderOdd.OddSpyProvider(list);
+                                                } else if (list[3].equalsIgnoreCase("jumping")) {
+                                                    JumpingOddProvider(list, variable);
                                                 } else if (list[3].equalsIgnoreCase("even")) {
                                                     System.out.printf("The request contains mutually exclusive properties: [%s, %s]%n", list[2].toUpperCase(), list[3].toUpperCase());
                                                     System.out.println("There are no numbers with these properties.");
                                                 } else {
                                                     System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
-                                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                                 }
-                            } else {
+                            } else if ((list[2].equalsIgnoreCase("jumping"))) {
+                                if (list[3].equalsIgnoreCase("jumping")) {
+                                    JumpingProvider(list);
+                                } else if (list[3].equalsIgnoreCase("buzz")) {
+                                    JumpingBuzzProvider(list, variable);
+                                } else if (list[3].equalsIgnoreCase("duck")) {
+                                    JumpingDuckProvider(list, variable);
+                                } else if (list[3].equalsIgnoreCase("palindromic")) {
+                                    JumpingPalindromicProvider(list, variable);
+                                } else if (list[3].equalsIgnoreCase("square")) {
+                                    JumpingSquareProvider(list, variable);
+                                } else if (list[3].equalsIgnoreCase("sunny")) {
+                                    JumpingSunnyProvider(list, variable);
+                                } else if (list[3].equalsIgnoreCase("gapful")) {
+                                    JumpingGapfulProvider(list, variable);
+                                } else if (list[3].equalsIgnoreCase("spy")) {
+                                    JumpingSpyProvider(list, variable);
+                                } else if (list[3].equalsIgnoreCase("odd")) {
+                                    JumpingOddProvider(list, variable);
+                                } else if (list[3].equalsIgnoreCase("even")) {
+                                    JumpingEvenProvider(list, variable);
+                                } else {
+                                    System.out.printf("The property [%s] is wrong.%n", list[3].toUpperCase());
+                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
+                                }
+                            }else {
                                 if (!list[3].equalsIgnoreCase("gapful") && !list[3].equalsIgnoreCase("square") &&
                                         !list[3].equalsIgnoreCase("duck") && !list[3].equalsIgnoreCase("sunny") &&
                                         !list[3].equalsIgnoreCase("spy") && !list[3].equalsIgnoreCase("palindromic") &&
                                         !list[3].equalsIgnoreCase("buzz") && !list[3].equalsIgnoreCase("odd") &&
                                         !list[3].equalsIgnoreCase("even")) {
                                     System.out.printf("The properties [%s, %s] are wrong.%n", list[2].toUpperCase(), list[3].toUpperCase());
-                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                 } else {
                                     System.out.printf("The property [%s] is wrong.%n", list[2].toUpperCase());
-                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, EVEN, ODD]");
+                                    System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                                 }
 
+                            }
+
+                        } else if (list.length == 5) {
+                            if (list[2].equalsIgnoreCase("odd") && list[3].equalsIgnoreCase("spy")
+                            && list[4].equalsIgnoreCase("palindromic")) {
+                                Providerthree(list, variable);
+                            } else if (list[2].equalsIgnoreCase("odd") && list[3].equalsIgnoreCase("spy")
+                                    && list[4].equalsIgnoreCase("gapful")) {
+                                Providerthree2(list, variable);
+                            } else if (list[2].equalsIgnoreCase("even") && list[3].equalsIgnoreCase("palindromic")
+                                    && list[4].equalsIgnoreCase("duck")) {
+                                Providerthree3(list, variable);
+                            } else if (number.contains("duck") && number.contains("spy")) {
+                                System.out.println("The request contains mutually exclusive properties: [DUCK, SPY]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else if ((number.contains("even") && number.contains("odd"))) {
+                                System.out.println("The request contains mutually exclusive properties: [EVEN, ODD]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else if (number.contains("sunny") && number.contains("square")) {
+                                System.out.println("The request contains mutually exclusive properties: [SUNNY, SQUARE]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else {
+                                if (!list[2].equalsIgnoreCase("even") && !list[2].equalsIgnoreCase("odd")
+                                        && !list[2].equalsIgnoreCase("buzz") && !list[2].equalsIgnoreCase("jumping")
+                                        && !list[2].equalsIgnoreCase("sunny") && !list[2].equalsIgnoreCase("spy")
+                                        && !list[2].equalsIgnoreCase("square") && !list[2].equalsIgnoreCase("duck")
+                                        && !list[2].equalsIgnoreCase("palindromic") && !list[2].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[3].equalsIgnoreCase("even") && !list[3].equalsIgnoreCase("odd")
+                                        && !list[3].equalsIgnoreCase("buzz") && !list[3].equalsIgnoreCase("jumping")
+                                        && !list[3].equalsIgnoreCase("sunny") && !list[3].equalsIgnoreCase("spy")
+                                        && !list[3].equalsIgnoreCase("square") && !list[3].equalsIgnoreCase("duck")
+                                        && !list[3].equalsIgnoreCase("palindromic") && !list[3].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[4].equalsIgnoreCase("even") && !list[4].equalsIgnoreCase("odd")
+                                        && !list[4].equalsIgnoreCase("buzz") && !list[4].equalsIgnoreCase("jumping")
+                                        && !list[4].equalsIgnoreCase("sunny") && !list[4].equalsIgnoreCase("spy")
+                                        && !list[4].equalsIgnoreCase("square") && !list[4].equalsIgnoreCase("duck")
+                                        && !list[4].equalsIgnoreCase("palindromic") && !list[4].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+
+                        }} else if (list.length == 6) {
+                            if (list[2].equalsIgnoreCase("even") && list[3].equalsIgnoreCase("palindromic")
+                                    && list[4].equalsIgnoreCase("duck") && list[5].equalsIgnoreCase("buzz")) {
+                                Providerfor(list, variable);
+                            } else if (list[2].equalsIgnoreCase("even") && list[3].equalsIgnoreCase("spy")
+                                    && list[4].equalsIgnoreCase("buzz") && list[5].equalsIgnoreCase("gapful")) {
+                                Providerfor2(list, variable);
+                            } else if (number.contains("duck") && number.contains("spy")) {
+                                System.out.println("The request contains mutually exclusive properties: [DUCK, SPY]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else if ((number.contains("even") && number.contains("odd"))) {
+                                System.out.println("The request contains mutually exclusive properties: [EVEN, ODD]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else if (number.contains("sunny") && number.contains("square")) {
+                                System.out.println("The request contains mutually exclusive properties: [SUNNY, SQUARE]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else {
+                                if (!list[2].equalsIgnoreCase("even") && !list[2].equalsIgnoreCase("odd")
+                                        && !list[2].equalsIgnoreCase("buzz") && !list[2].equalsIgnoreCase("jumping")
+                                        && !list[2].equalsIgnoreCase("sunny") && !list[2].equalsIgnoreCase("spy")
+                                        && !list[2].equalsIgnoreCase("square") && !list[2].equalsIgnoreCase("duck")
+                                        && !list[2].equalsIgnoreCase("palindromic") && !list[2].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[3].equalsIgnoreCase("even") && !list[3].equalsIgnoreCase("odd")
+                                        && !list[3].equalsIgnoreCase("buzz") && !list[3].equalsIgnoreCase("jumping")
+                                        && !list[3].equalsIgnoreCase("sunny") && !list[3].equalsIgnoreCase("spy")
+                                        && !list[3].equalsIgnoreCase("square") && !list[3].equalsIgnoreCase("duck")
+                                        && !list[3].equalsIgnoreCase("palindromic") && !list[3].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[4].equalsIgnoreCase("even") && !list[4].equalsIgnoreCase("odd")
+                                        && !list[4].equalsIgnoreCase("buzz") && !list[4].equalsIgnoreCase("jumping")
+                                        && !list[4].equalsIgnoreCase("sunny") && !list[4].equalsIgnoreCase("spy")
+                                        && !list[4].equalsIgnoreCase("square") && !list[4].equalsIgnoreCase("duck")
+                                        && !list[4].equalsIgnoreCase("palindromic") && !list[4].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[5].equalsIgnoreCase("even") && !list[5].equalsIgnoreCase("odd")
+                                        && !list[5].equalsIgnoreCase("buzz") && !list[5].equalsIgnoreCase("jumping")
+                                        && !list[5].equalsIgnoreCase("sunny") && !list[5].equalsIgnoreCase("spy")
+                                        && !list[5].equalsIgnoreCase("square") && !list[5].equalsIgnoreCase("duck")
+                                        && !list[5].equalsIgnoreCase("palindromic") && !list[5].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                        }} else {
+                            if (list[2].equalsIgnoreCase("even") && list[3].equalsIgnoreCase("palindromic")
+                                    && list[4].equalsIgnoreCase("duck") && list[5].equalsIgnoreCase("buzz") &&
+                                    list[6].equalsIgnoreCase("gapful")) {
+                                Providerfive(list, variable);
+                            } else if (list[2].equalsIgnoreCase("even") && list[3].equalsIgnoreCase("sunny")
+                                    && list[4].equalsIgnoreCase("duck") && list[5].equalsIgnoreCase("buzz") &&
+                                    list[6].equalsIgnoreCase("gapful")) {
+                                Providerfive2(list, variable);
+                            } else if (number.contains("duck") && number.contains("spy")) {
+                                System.out.println("The request contains mutually exclusive properties: [DUCK, SPY]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else if ((number.contains("even") && number.contains("odd"))) {
+                                System.out.println("The request contains mutually exclusive properties: [EVEN, ODD]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else if (number.contains("sunny") && number.contains("square")) {
+                                System.out.println("The request contains mutually exclusive properties: [SUNNY, SQUARE]");
+                                System.out.println("There are no numbers with these properties.");
+                            } else {
+                                if (!list[2].equalsIgnoreCase("even") && !list[2].equalsIgnoreCase("odd")
+                                && !list[2].equalsIgnoreCase("buzz") && !list[2].equalsIgnoreCase("jumping")
+                                && !list[2].equalsIgnoreCase("sunny") && !list[2].equalsIgnoreCase("spy")
+                                && !list[2].equalsIgnoreCase("square") && !list[2].equalsIgnoreCase("duck")
+                                && !list[2].equalsIgnoreCase("palindromic") && !list[2].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[3].equalsIgnoreCase("even") && !list[3].equalsIgnoreCase("odd")
+                                        && !list[3].equalsIgnoreCase("buzz") && !list[3].equalsIgnoreCase("jumping")
+                                        && !list[3].equalsIgnoreCase("sunny") && !list[3].equalsIgnoreCase("spy")
+                                        && !list[3].equalsIgnoreCase("square") && !list[3].equalsIgnoreCase("duck")
+                                        && !list[3].equalsIgnoreCase("palindromic") && !list[3].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[4].equalsIgnoreCase("even") && !list[4].equalsIgnoreCase("odd")
+                                        && !list[4].equalsIgnoreCase("buzz") && !list[4].equalsIgnoreCase("jumping")
+                                        && !list[4].equalsIgnoreCase("sunny") && !list[4].equalsIgnoreCase("spy")
+                                        && !list[4].equalsIgnoreCase("square") && !list[4].equalsIgnoreCase("duck")
+                                        && !list[4].equalsIgnoreCase("palindromic") && !list[4].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[5].equalsIgnoreCase("even") && !list[5].equalsIgnoreCase("odd")
+                                        && !list[5].equalsIgnoreCase("buzz") && !list[5].equalsIgnoreCase("jumping")
+                                        && !list[5].equalsIgnoreCase("sunny") && !list[5].equalsIgnoreCase("spy")
+                                        && !list[5].equalsIgnoreCase("square") && !list[5].equalsIgnoreCase("duck")
+                                        && !list[5].equalsIgnoreCase("palindromic") && !list[5].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
+                                else if (!list[6].equalsIgnoreCase("even") && !list[6].equalsIgnoreCase("odd")
+                                        && !list[6].equalsIgnoreCase("buzz") && !list[6].equalsIgnoreCase("jumping")
+                                        && !list[6].equalsIgnoreCase("sunny") && !list[6].equalsIgnoreCase("spy")
+                                        && !list[6].equalsIgnoreCase("square") && !list[6].equalsIgnoreCase("duck")
+                                        && !list[6].equalsIgnoreCase("palindromic") && !list[6].equalsIgnoreCase("gapful")) {
+                                    System.out.printf("The property [%s] is wrong.", list[2].toUpperCase());
+                                    System.out.println("Available properties: [BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, EVEN, ODD]");
+                                }
                             }
 
                         }
